@@ -16,8 +16,10 @@ using (var client = new HttpClient()) {
     if (response.IsSuccessStatusCode) {
         var dataRes = await response.Content.ReadAsStringAsync();
         var jsonRes = JsonConvert.DeserializeObject<Rootobject>(dataRes);
+        if (jsonRes != null) {
+            Console.WriteLine(jsonRes.token);
+        }
 
-        Console.WriteLine(jsonRes.token);
 
     }
 }
